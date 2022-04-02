@@ -1,3 +1,13 @@
+// Referencia do HTML
+
+let pictureReference = document.getElementById('picture')
+let nameReference = document.getElementById('name')
+let emailReference = document.getElementById('email')
+
+
+
+
+
 // Aqui realizamos a consulta da promisse, esperando sua resposta assíncrona
 fetch('https://randomuser.me/api/')
     .then(response => {
@@ -5,10 +15,17 @@ fetch('https://randomuser.me/api/')
     })
     .then(data => {
         //manipulamos a resposta
+        renderizarDadosUsuario(data.results[0])
         console.log(data)
     });
 
 function renderizarDadosUsuario(dados) {
+       
+    pictureReference.src = dados.picture.medium
+    nameReference.innerText = `Nome Completo: ${dados.name.first} ${dados.name.last}`
+    emailReference.innerText = dados.email
+
+    
     /* -------------------------------- Tarefa 1 -------------------------------- */
     // Aqui devem desenvolver uma função que seja exibida na tela:
     // a foto, o nome completo do usuário e o e-mail.
